@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         rcvMusic = findViewById(R.id.recycler_view_music)
 
         listMusic = Music.getMock()
-        musicAdapter = MusicAdapter(listMusic)
+        musicAdapter = MusicAdapter(listMusic, this)
         rcvMusic.adapter = musicAdapter
         rcvMusic.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
