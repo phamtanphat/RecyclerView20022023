@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
  * Created by pphat on 3/29/2023.
  */
 class MusicAdapter(
-    var listMusic: MutableList<Music>,
-    var context: Context
+    var listMusic: MutableList<Music>
 ) : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>() {
+
+    private lateinit var onItemListener: OnItemListener
 
     inner class MusicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var imageView: ImageView
@@ -34,9 +35,7 @@ class MusicAdapter(
             imageView.setImageResource(music.image)
             tvSong.text = music.song
             tvSinger.text = music.singer
-            imgDelete.setOnClickListener {
-                Toast.makeText(context, "Click delete", Toast.LENGTH_SHORT).show()
-            }
+            imgDelete.setOnClickListener { onItemListener.onClickDelete(adapterPosition) }
         }
     }
 
@@ -52,5 +51,13 @@ class MusicAdapter(
 
     override fun getItemCount(): Int {
         return listMusic.size
+    }
+
+    fun setOnItemClick(onItemListener: OnItemListener) {
+        this.onItemListener = onItemListener
+    }
+
+    interface OnItemListener {
+        fun onClickDelete(position: Int)
     }
 }
