@@ -2,6 +2,7 @@ package com.examp.recyclerview20022023
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -19,5 +20,6 @@ class MainActivity : AppCompatActivity() {
         listMusic = Music.getMock()
         musicAdapter = MusicAdapter(listMusic)
         rcvMusic.adapter = musicAdapter
+        rcvMusic.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 }
